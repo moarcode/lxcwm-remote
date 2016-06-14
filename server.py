@@ -4,14 +4,9 @@ import socket               # Import socket module
 import pickle
 import os, sys
 
-class Cnt(object):
-    def __init__(host="localhost", name):
-        self.host = host
-        self.name = name
-
 s = socket.socket()         # Create a socket object
-host = socket.gethostname() # Get local machine name
-port = 12345                # Reserve a port for your service.
+host = 'localhost' # Get local machine name
+port = 5050                # Reserve a port for your service.
 s.bind((host, port))        # Bind to the port
 
 s.listen(5)                 # Now wait for client connection.
@@ -21,6 +16,6 @@ while True:
    #print c.recv(1024)
    dic = pickle.loads(c.recv(1024))
    print dic
-   c.send('Thank you for connecting')
+   c.send('100')
    c.close()                # Close the connection
 

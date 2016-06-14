@@ -1,11 +1,13 @@
-#!/usr/bin/python           
+#!/usr/bin/python
 import socket               # Import socket module
 import pickle
 
 s = socket.socket()         # Create a socket object
-host = socket.gethostname() # Get local machine name
-port = 12345                # Reserve a port for your service.
-dic={"Hostname": "test.com", "IP": "192.168.1.1."}
+#host = socket.gethostname() # Get local machine name
+host = 'localhost'
+port = 5050                # Reserve a port for your service.
+#dic={"Hostname": "test.com", "IP": "192.168.1.1."}
+dic = "STATUS TEST"
 
 s.connect((host, port))
 #s.send(dic)
