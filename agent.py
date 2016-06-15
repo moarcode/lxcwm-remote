@@ -5,6 +5,14 @@ import pickle
 # MSG
 # Command LXC-Name
 
+# Import vars from file
+file = open('agent.cfg')
+for line in file:
+    fields = line.strip().split()
+
+host = fields[0]
+port = int(fields[1])
+
 def forward_msg(msg, addr='localhost', port=5050):
 
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -41,8 +49,6 @@ def exec_msg(msg):
     return func
 
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-host = 'localhost'
-port = 5070
 s.bind((host, port))
 s.listen(5)
 while True:

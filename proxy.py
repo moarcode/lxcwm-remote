@@ -5,6 +5,14 @@ import pickle
 # MSG
 # Command LXC-Name
 
+# Import vars from file
+file = open('proxy.cfg')
+for line in file:
+    fields = line.strip().split()
+
+host = fields[0]
+port = int(fields[1])
+
 def forward_msg(msg, addr='localhost', port=5050):
 
     s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -45,12 +53,11 @@ c.send("TEST", msg="START")
 """
 
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-host = 'localhost'
-port = 5050
 s.bind((host, port))
 s.listen(5)
 while True:
     c, addr = s.accept()
+    print (addr)
     recv = pickle.loads(c.recv(1024))
     c.send('100'.encode())
     print (recv)
