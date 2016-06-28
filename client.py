@@ -1,10 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import socket               # Import socket module
 import pickle
 
 s = socket.socket()         # Create a socket object
 #host = socket.gethostname() # Get local machine name
-host = 'localhost'
+host = '192.168.56.20'
 port = 5050                # Reserve a port for your service.
 #dic={"Hostname": "test.com", "IP": "192.168.1.1."}
 dic = "STATUS TEST"
@@ -12,5 +12,5 @@ dic = "STATUS TEST"
 s.connect((host, port))
 #s.send(dic)
 s.send((pickle.dumps(dic)))
-print s.recv(1024)
+print (s.recv(1024))
 s.close                     # Close the socket when done
